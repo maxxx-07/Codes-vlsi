@@ -1,0 +1,172 @@
+
+
+//c code for led flashing
+
+#include<reg51.h>
+
+void msdelay();
+
+void main()
+{
+	while(1)
+	{
+		P2 = 0xFF;
+		msdelay();
+		P2 =0x00;
+		msdelay();
+		
+	}
+}
+
+void msdelay()
+{
+	int i , j ;
+	for(i=0; i<1000 ; i++)
+	  {
+		for(j=0; j<100 ;j++);
+		}
+}
+
+
+
+
+
+
+c code for binary/hex counting
+
+#include<reg51.h>
+
+void msdelay(unsigned int t);
+
+void main()
+{
+	unsigned int i;
+	
+	while(1)
+	{
+		for(i = 0 ; i<16 ; i++)
+			{
+				P2 = i;
+				msdelay(500);
+			
+			}
+	}		
+}
+
+
+void msdelay(unsigned int t )
+{
+	unsigned int i ,j;
+	
+	for(i=0 ;i< t ;i++)
+	{
+	 for(j=0; j<1100 ;j++);
+	}
+}
+
+
+
+
+//c code for decade counting
+
+#include<reg51.h>
+
+void msdelay(unsigned int t);
+
+void main()
+{
+ unsigned int i;
+	
+	while(1)
+	{
+		for(i=0 ;i <10 ; i++)
+			{
+				P2 = i;
+				msdelay(500);
+			}
+	}
+}
+
+
+void msdelay(unsigned int t)
+{
+	unsigned int i , j;
+	
+	for(i=0; i<t ; i++)
+		for(j=0; j<1100 ;j++);
+}
+
+
+
+
+
+
+
+7seg display
+
+#include<reg51.h>
+
+void msdelay(unsigned int t);
+
+void main()
+{
+	unsigned char dispdata[] = {0x3F, 0x06, 0x5B , 0x4F , 0x66, 0x6D, 0x7D ,0x07, 0x7F , 0x6F};
+	
+	char k;
+	while(1)
+	{
+		for(k=0 ; k<10 ;k++)
+			{
+				P2 = dispdata[k];
+				msdelay(100);
+				
+			}
+	}
+}
+
+void msdelay(unsigned int t)
+{
+	unsigned int i,j;
+	for(i=0 ; i<t ; i++)
+	  for(j=0; j<1100 ;j++);
+}
+	
+
+
+
+
+
+
+// relay and buzzer
+
+#include<reg51.h>
+
+sbit relay =P1^6;
+sbit buzzer =P1^7;
+
+void msdelay();
+
+void main()
+{
+	while(1)
+	{
+		relay = 1;
+		buzzer =1;
+		msdelay();
+		relay = 0;
+		buzzer =0;
+		msdelay();
+	}
+
+}
+
+
+void msdelay()
+{
+  unsigned int i,j;
+	for(i=0 ; i<500 ; i++)
+		for(j=0; j<1275; j++);
+}
+
+
+
